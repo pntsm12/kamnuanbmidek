@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>คำนวณ BMI เด็ก — ดัชนีมวลกายตามวัย</title>
+<meta name="description" content="คำนวณ BMI เด็กออนไลน์ฟรี ใช้เกณฑ์ WHO 2007 และกรมอนามัย 2564 แสดงผลเปรียบเทียบกับเด็กรุ่นเดียวกัน พร้อมช่วง BMI ปกติตามอายุ รองรับอายุ 5-18 ปี">
+<meta name="keywords" content="BMI เด็ก, คำนวณ BMI เด็ก, BMI for age, เปอร์เซนไทล์, ดัชนีมวลกายเด็ก, WHO 2007">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://kamnuan.net/kamnuanbmidek/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="คำนวณ BMI เด็ก — ดัชนีมวลกายตามวัย">
+<meta property="og:description" content="คำนวณ BMI เด็กออนไลน์ฟรี ใช้เกณฑ์ WHO 2007 รองรับอายุ 5-18 ปี แสดงเปอร์เซนไทล์และเกณฑ์การเจริญเติบโต">
+<meta property="og:url" content="https://kamnuan.net/kamnuanbmidek/">
+<meta property="og:locale" content="th_TH">
+<meta property="og:site_name" content="คำนวณ">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+  {"@type":"WebApplication","name":"คำนวณ BMI เด็ก","url":"https://kamnuan.net/kamnuanbmidek/","description":"คำนวณ BMI เด็กออนไลน์ฟรี ใช้เกณฑ์ WHO 2007 และกรมอนามัย 2564","applicationCategory":"HealthApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"THB"},"inLanguage":"th","isAccessibleForFree":true},
+  {"@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"BMI เด็กต่างจาก BMI ผู้ใหญ่อย่างไร","acceptedAnswer":{"@type":"Answer","text":"BMI เด็กต้องใช้เกณฑ์ตามอายุและเพศ เรียกว่า BMI-for-age เพราะร่างกายเด็กอยู่ระหว่างการเจริญเติบโต ตัวเลข BMI เดิมอาจมีความหมายต่างกันในแต่ละอายุ จึงต้องเปรียบเทียบกับเด็กรุ่นเดียวกันก่อน"}},
+    {"@type":"Question","name":"เปอร์เซนไทล์ BMI เด็กเกณฑ์ปกติคือเท่าไหร่","acceptedAnswer":{"@type":"Answer","text":"ตามเกณฑ์ WHO 2007 ที่กรมอนามัยไทยอ้างอิง เด็กที่เปอร์เซนไทล์อยู่ระหว่าง 2nd ถึง 85th ถือว่าอยู่ในเกณฑ์ปกติ"}},
+    {"@type":"Question","name":"ใช้เกณฑ์อะไรในการคำนวณ","acceptedAnswer":{"@type":"Answer","text":"ใช้ WHO Growth Reference 2007 สำหรับเด็กอายุ 5-19 ปี ซึ่งเป็นมาตรฐานที่กรมอนามัย กระทรวงสาธารณสุขไทยอ้างอิงในคู่มือการใช้เกณฑ์อ้างอิงการเจริญเติบโตของเด็กอายุ 6-19 ปี ฉบับปี 2564"}}
+  ]}
+]}
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1063556443578237" crossorigin="anonymous"></script>
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@700&family=Sarabun:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@700&family=Sarabun:wght@400;500;600&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#F8F8F7;--s0:#FFFFFF;--s1:#F2F1EE;--s2:#ECEAE6;--b0:rgba(0,0,0,0.07);--b1:rgba(0,0,0,0.13);--t0:#18181A;--t1:#4A4946;--t2:#7A7872;--ink:#18181A;--inv:#FFFFFF;--r:8px;--r-lg:12px;}
+[data-theme="dark"]{--bg:#111110;--s0:#1C1C1A;--s1:#242422;--s2:#2C2B28;--b0:rgba(255,255,255,0.07);--b1:rgba(255,255,255,0.13);--t0:#EDEAE2;--t1:#A8A49C;--t2:#68655E;--ink:#EDEAE2;--inv:#111110;}
+:focus-visible{outline:2px solid #2563EB;outline-offset:2px;border-radius:4px;}
+:focus:not(:focus-visible){outline:none;}
+html{scroll-behavior:smooth;}
+body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--t0);min-height:100vh;line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .2s,color .2s;}
+header{position:sticky;top:0;z-index:100;height:52px;display:flex;align-items:center;padding:0 20px;gap:12px;border-bottom:1px solid var(--b0);background:rgba(248,248,247,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);}
+[data-theme="dark"] header{background:rgba(17,17,16,0.92);}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex:1;}
+.logo svg{width:30px;height:30px;display:block;flex-shrink:0;}
+.logo-t{display:flex;flex-direction:column;line-height:1.1;}
+.logo-th{font-family:'Noto Serif Thai',serif;font-size:15px;font-weight:700;color:var(--t0);}
+.logo-en{font-size:9px;font-weight:600;color:var(--t2);letter-spacing:2px;}
+.hdr-right{display:flex;align-items:center;gap:8px;}
+.back-btn{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border:1px solid var(--b0);border-radius:20px;font-family:'Sarabun',sans-serif;font-size:12px;color:var(--t1);text-decoration:none;transition:border-color .15s,color .15s;white-space:nowrap;}
+.back-btn:hover{border-color:var(--b1);color:var(--t0);}
+.back-btn svg{width:13px;height:13px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.dark-btn{width:32px;height:32px;border:1px solid var(--b0);border-radius:6px;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--t1);transition:all .15s;}
+.dark-btn:hover{border-color:var(--b1);color:var(--t0);background:var(--s1);}
+.dark-btn svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.ad-bar{display:flex;justify-content:center;padding:8px 16px;background:var(--s1);border-bottom:1px solid var(--b0);}
+.page{max-width:600px;margin:0 auto;padding:28px 20px 72px;}
+.page-hd{margin-bottom:20px;}
+.page-hd h1{font-family:'Noto Serif Thai',serif;font-size:clamp(22px,4vw,30px);font-weight:700;color:var(--t0);line-height:1.2;letter-spacing:-.3px;}
+.page-hd p{margin-top:6px;font-size:14px;color:var(--t1);line-height:1.6;}
+.badge-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.badge{display:inline-block;padding:3px 10px;border:1px solid var(--b0);border-radius:20px;font-size:11px;color:var(--t2);background:var(--s1);}
+.card{background:var(--s0);border:1px solid var(--b0);border-radius:var(--r-lg);overflow:hidden;margin-bottom:10px;}
+.card-body{padding:16px 18px;}
+.sex-row{display:flex;gap:6px;margin-bottom:14px;}
+.sex-btn{flex:1;height:40px;border:1px solid var(--b0);border-radius:var(--r);background:var(--s0);font-family:'Sarabun',sans-serif;font-size:14px;font-weight:500;color:var(--t1);cursor:pointer;transition:all .15s;}
+.sex-btn:hover{border-color:var(--b1);color:var(--t0);}
+.sex-btn.on{background:var(--ink);border-color:var(--ink);color:var(--inv);}
+.field{margin-bottom:14px;}
+.lbl{display:block;font-size:13px;font-weight:600;color:var(--t1);margin-bottom:6px;}
+.lbl-sub{font-size:11px;color:var(--t2);font-weight:400;margin-left:4px;}
+.inp-row{display:flex;gap:0;}
+.inp-row input{flex:1;height:44px;padding:0 12px;border:1px solid var(--b0);border-right:none;border-radius:var(--r) 0 0 var(--r);background:var(--s0);color:var(--t0);font-family:'Sarabun',sans-serif;font-size:15px;transition:border-color .15s;}
+.inp-row input:focus{outline:none;border-color:#2563EB;}
+.inp-suf{height:44px;padding:0 12px;border:1px solid var(--b0);border-radius:0 var(--r) var(--r) 0;background:var(--s1);color:var(--t2);font-size:13px;display:flex;align-items:center;white-space:nowrap;}
+.age-row{display:flex;gap:8px;}
+.age-row .field{flex:1;}
+.age-row .inp-row input{font-size:15px;}
+.btn-calc{width:100%;height:46px;background:var(--ink);color:var(--inv);border:none;border-radius:var(--r);font-family:'Sarabun',sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:opacity .15s;margin-top:4px;}
+.btn-calc:hover{opacity:.85;}
+.result-box{display:none;background:var(--s0);border:1px solid var(--b0);border-radius:var(--r-lg);overflow:hidden;margin-top:10px;}
+.result-top{padding:16px 18px 14px;border-bottom:1px solid var(--b0);}
+.result-lbl{font-size:11px;font-weight:600;color:var(--t2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;}
+.result-bmi{font-family:'Noto Serif Thai',serif;font-size:42px;font-weight:700;color:var(--t0);line-height:1;}
+.result-unit{font-size:14px;color:var(--t2);margin-left:4px;}
+.result-top-row{display:flex;justify-content:space-between;align-items:center;}
+.result-top-left{display:flex;align-items:baseline;gap:6px;}
+.result-status{display:inline-flex;align-items:center;justify-content:center;padding:8px 18px;border-radius:var(--r);font-size:16px;font-weight:700;min-width:80px;text-align:center;}
+.st-thin2{background:#fef3c7;color:#92400e;}
+.st-thin{background:#fef3c7;color:#b45309;}
+.st-normal{background:#dcfce7;color:#166534;}
+.st-over{background:#ffedd5;color:#9a3412;}
+.st-obese{background:#fee2e2;color:#991b1b;}
+[data-theme="dark"] .st-thin2{background:#451a03;color:#fcd34d;}
+[data-theme="dark"] .st-thin{background:#451a03;color:#fbbf24;}
+[data-theme="dark"] .st-normal{background:#052e16;color:#86efac;}
+[data-theme="dark"] .st-over{background:#431407;color:#fb923c;}
+[data-theme="dark"] .st-obese{background:#450a0a;color:#fca5a5;}
+.result-body{padding:12px 18px;}
+.bd-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--b0);}
+.bd-row:last-child{border-bottom:none;}
+.bd-lbl{font-size:13px;color:var(--t1);}
+.bd-val{font-size:14px;font-weight:600;color:var(--t0);}
+.note-box{background:var(--s1);border:1px solid var(--b0);border-radius:var(--r);padding:10px 14px;font-size:12px;color:var(--t2);line-height:1.7;margin-top:8px;}
+.note-box strong{color:var(--t1);}
+.faq-wrap{margin-top:28px;border-top:1px solid var(--b0);padding-top:24px;}
+.faq-h2{font-family:'Noto Serif Thai',serif;font-size:18px;font-weight:700;color:var(--t0);margin-bottom:14px;}
+.faq-item{border:1px solid var(--b0);border-radius:var(--r);overflow:hidden;margin-bottom:8px;}
+.faq-q{width:100%;padding:13px 16px;background:var(--s0);border:none;font-family:'Sarabun',sans-serif;font-size:14px;font-weight:500;color:var(--t0);text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;transition:background .15s;}
+.faq-q:hover{background:var(--s1);}
+.faq-q svg{width:14px;height:14px;stroke:var(--t2);stroke-width:2;fill:none;stroke-linecap:round;flex-shrink:0;transition:transform .2s;}
+.faq-q[aria-expanded="true"] svg{transform:rotate(180deg);}
+.faq-a{padding:0 16px;font-size:13px;color:var(--t1);line-height:1.8;max-height:0;overflow:hidden;transition:max-height .25s ease,padding .25s ease;}
+.faq-a.open{max-height:400px;padding:0 16px 14px;}
+.related-wrap{margin-top:20px;border-top:1px solid var(--b0);padding-top:20px;}
+.related-lbl{font-size:11px;font-weight:600;color:var(--t2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;}
+.related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;}
+.related-card{display:flex;align-items:center;gap:10px;padding:10px 13px;background:var(--s0);border:1px solid var(--b0);border-radius:var(--r);text-decoration:none;color:var(--t0);transition:border-color .14s,background .14s;}
+.related-card:hover{border-color:var(--b1);background:var(--s1);}
+.related-ico{width:28px;height:28px;background:var(--ink);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.related-ico svg{width:12px;height:12px;stroke:var(--inv);stroke-width:1.75;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.related-name{font-size:12px;font-weight:500;}
+footer{border-top:1px solid var(--b0);padding:20px;text-align:center;font-size:12px;color:var(--t2);}
+footer a{color:var(--t2);text-decoration:none;}
+footer a:hover{color:var(--t1);}
+@media(max-width:480px){.page{padding-left:12px;padding-right:12px;}.related-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header role="banner">
+  <a class="logo" href="/" aria-label="คำนวณ หน้าหลัก">
+    <svg viewBox="0 0 30 30" fill="none" aria-hidden="true"><rect width="30" height="30" rx="6" fill="var(--ink)"/><text x="3" y="22" font-family="Arial Black,sans-serif" font-size="19" font-weight="900" fill="var(--inv)">K</text><text x="13" y="24" font-family="Arial,sans-serif" font-size="7" font-weight="700" fill="var(--inv)">+x=</text></svg>
+    <div class="logo-t"><span class="logo-th">คำนวณ</span><span class="logo-en">KAMNUAN</span></div>
+  </a>
+  <div class="hdr-right">
+    <a class="back-btn" href="/"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>เครื่องมือทั้งหมด</a>
+    <button class="dark-btn" id="darkBtn" onclick="toggleDark()" type="button" aria-label="เปลี่ยนโหมดสีเข้ม">
+      <svg id="iSun" style="display:none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <svg id="iMoon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="ad-bar">
+  <ins class="adsbygoogle"
+    style="display:block;width:100%;max-width:728px;height:90px;"
+    data-ad-client="ca-pub-1063556443578237"
+    data-ad-slot="auto"
+    data-ad-format="horizontal"
+    data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+</div>
+
+<main class="page">
+  <div class="page-hd">
+    <h1>คำนวณ BMI เด็ก</h1>
+    <p>ใส่อายุ น้ำหนัก ส่วนสูง รู้ทันทีว่าเด็กอยู่ในเกณฑ์ไหน เทียบกับเด็กรุ่นเดียวกัน</p>
+  </div>
+
+  <div class="card"><div class="card-body">
+    <div class="field">
+      <label class="lbl">เพศ</label>
+      <div class="sex-row">
+        <button class="sex-btn on" id="sexM" onclick="setSex('M',this)" type="button">เด็กชาย</button>
+        <button class="sex-btn" id="sexF" onclick="setSex('F',this)" type="button">เด็กหญิง</button>
+      </div>
+    </div>
+    <div class="age-row">
+      <div class="field">
+        <label class="lbl" for="ageY">อายุ</label>
+        <div class="inp-row">
+          <input type="number" id="ageY" min="5" max="18" inputmode="numeric">
+          <span class="inp-suf">ปี</span>
+        </div>
+      </div>
+      <div class="field">
+        <label class="lbl" for="ageM">เดือน <span class="lbl-sub">(ถ้าทราบ)</span></label>
+        <div class="inp-row">
+          <input type="number" id="ageM" min="0" max="11" inputmode="numeric">
+          <span class="inp-suf">เดือน</span>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="lbl" for="weight">น้ำหนัก</label>
+      <div class="inp-row">
+        <input type="number" id="weight" min="1" max="200" step="0.1" inputmode="decimal">
+        <span class="inp-suf">กิโลกรัม</span>
+      </div>
+    </div>
+    <div class="field">
+      <label class="lbl" for="height">ส่วนสูง</label>
+      <div class="inp-row">
+        <input type="number" id="height" min="50" max="220" step="0.1" inputmode="decimal">
+        <span class="inp-suf">เซนติเมตร</span>
+      </div>
+    </div>
+    <button class="btn-calc" onclick="calcBMI()" type="button">คำนวณ</button>
+  </div></div>
+
+  <div class="result-box" id="resultBox">
+    <div class="result-top">
+      <div class="result-lbl">ค่า BMI</div>
+      <div class="result-top-row">
+        <div class="result-top-left">
+          <span class="result-bmi" id="rBMI">–</span>
+          <span class="result-unit">kg/m²</span>
+        </div>
+        <span class="result-status" id="rStatus"></span>
+      </div>
+      <div id="rStatusSub" style="font-size:13px;color:var(--t2);margin-top:6px;"></div>
+    </div>
+
+    <div class="result-body">
+      <div class="bd-row"><span class="bd-lbl">เปอร์เซนไทล์ <span style="font-size:11px;font-weight:400;color:var(--t2)">(เทียบกับเด็กเพศเดียวกัน อายุใกล้เคียงกัน 100 คน)</span><br><span style="font-size:11px;font-weight:400;color:var(--t2)" id="rPctSub"></span></span><span class="bd-val" id="rPct">–</span></div>
+      <div class="bd-row"><span class="bd-lbl">BMI ปกติสำหรับอายุนี้</span><span class="bd-val" id="rNormal">–</span></div>
+      <div class="bd-row"><span class="bd-lbl">น้ำหนัก</span><span class="bd-val" id="rW">–</span></div>
+      <div class="bd-row"><span class="bd-lbl">ส่วนสูง</span><span class="bd-val" id="rH">–</span></div>
+      <div class="bd-row"><span class="bd-lbl">อายุ</span><span class="bd-val" id="rAge">–</span></div>
+      <div class="bd-row"><span class="bd-lbl">น้ำหนักที่เหมาะสม <span style="font-size:11px;color:var(--t2);">(สำหรับส่วนสูงนี้)</span></span><span class="bd-val" id="rIdeal">–</span></div>
+    </div>
+    <p style="padding:12px 18px;font-size:12px;color:var(--t2);border-top:1px solid var(--b0);">ผลลัพธ์เป็นการประเมินเบื้องต้นเท่านั้น ไม่ใช่การวินิจฉัยทางการแพทย์ หากมีข้อสงสัยควรปรึกษาแพทย์</p>
+  </div>
+
+
+
+  <div class="faq-wrap">
+    <h2 class="faq-h2">คำถามที่พบบ่อย</h2>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" type="button">เปอร์เซนไทล์คืออะไร?<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="faq-a">เปอร์เซนไทล์คือการจัดอันดับเปรียบเทียบกับเด็ก 100 คนที่เพศและอายุใกล้เคียงกัน เช่น เปอร์เซนไทล์ที่ 20 หมายความว่าเด็ก 100 คน เด็กคนนี้มี BMI สูงกว่า 20 คน และต่ำกว่าอีก 80 คน ช่วงปกติอยู่ที่เปอร์เซนไทล์ 2 ถึง 85</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" type="button">BMI เด็กต่างจาก BMI ผู้ใหญ่อย่างไร?<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="faq-a">BMI เด็กต้องใช้เกณฑ์ตามอายุและเพศ เรียกว่า BMI-for-age เพราะร่างกายเด็กอยู่ระหว่างการเจริญเติบโต ตัวเลข BMI ค่าเดียวกันอาจมีความหมายต่างกันในแต่ละอายุ จึงต้องเปรียบเทียบกับเด็กรุ่นเดียวกันก่อน ต่างจาก BMI ผู้ใหญ่ที่ใช้ตัวเลข BMI ตรงๆ</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" type="button">เปอร์เซนไทล์ BMI เด็กเกณฑ์ปกติคือเท่าไหร่?<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="faq-a">ตามเกณฑ์ WHO 2007 ที่กรมอนามัยไทยอ้างอิง แบ่งเป็น 5 ระดับ คือ ผอมมาก ผอม ปกติ น้ำหนักเกิน และอ้วน โดยช่วงปกติจะอยู่ที่เปอร์เซนไทล์ที่ 2 ถึง 85 เมื่ออายุ 19 ปี เกณฑ์น้ำหนักเกินจะใกล้เคียงกับ BMI 25 ของผู้ใหญ่</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" type="button">ใช้เกณฑ์อะไรในการคำนวณ?<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="faq-a">ใช้ WHO Growth Reference 2007 สำหรับเด็กอายุ 5-19 ปี คำนวณด้วย LMS method (Box-Cox normal distribution) ซึ่งเป็นมาตรฐานที่กรมอนามัย กระทรวงสาธารณสุขไทยอ้างอิงในคู่มือการใช้เกณฑ์อ้างอิงการเจริญเติบโตของเด็กอายุ 6-19 ปี ฉบับปี 2564</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" type="button">ทำไมต้องรู้อายุเป็นเดือน?<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="faq-a">เกณฑ์ BMI-for-age ของ WHO กำหนดค่า LMS ตามอายุเป็นเดือน ยิ่งอายุละเอียดยิ่งได้ผลแม่นยำ โดยเฉพาะในช่วงที่ร่างกายเปลี่ยนแปลงเร็ว เช่น ช่วง 10-14 ปี หากไม่ทราบเดือน ใส่ 0 ได้เลย</div>
+    </div>
+  </div>
+
+  <div class="related-wrap">
+    <div class="related-lbl">เครื่องมือที่เกี่ยวข้อง</div>
+    <div class="related-grid">
+      <a class="related-card" href="/kamnuanbmi/">
+        <div class="related-ico"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <span class="related-name">คำนวณ BMI ผู้ใหญ่</span>
+      </a>
+      <a class="related-card" href="/kamnuankcal/">
+        <div class="related-ico"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+        <span class="related-name">คำนวณแคลอรี TDEE</span>
+      </a>
+      <a class="related-card" href="/kamnuannamnak/">
+        <div class="related-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <span class="related-name">แปลงน้ำหนัก</span>
+      </a>
+      <a class="related-card" href="/kamnuankhwamyao/">
+        <div class="related-ico"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        <span class="related-name">แปลงความยาว</span>
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer role="contentinfo">
+  <p>© 2569 คำนวณ <a href="/">หน้าหลัก</a> <a href="/privacy.html">นโยบายความเป็นส่วนตัว</a></p>
+</footer>
+
+<script>
+/* THEME */
+function initTheme(){const s=localStorage.getItem('theme'),p=matchMedia('(prefers-color-scheme:dark)').matches;applyT(s||(p?'dark':'light'));}
+function applyT(t){document.documentElement.setAttribute('data-theme',t);document.getElementById('iSun').style.display=t==='dark'?'block':'none';document.getElementById('iMoon').style.display=t==='dark'?'none':'block';localStorage.setItem('theme',t);}
+function toggleDark(){applyT(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');}
+initTheme();
+
+/* SEX */
+let sex = 'M';
+function setSex(s, btn) {
+  sex = s;
+  document.getElementById('sexM').classList.toggle('on', s==='M');
+  document.getElementById('sexF').classList.toggle('on', s==='F');
+  document.getElementById('resultBox').style.display = 'none';
+}
+
+/*
+  WHO 2007 BMI-for-age LMS values
+  ข้อมูลจาก WHO Growth Reference 2007 (https://www.who.int/tools/growth-reference-data-for-5to19-years)
+  แต่ละแถว: [อายุ (เดือน), L, M, S]
+  ครอบคลุม 61-228 เดือน (5 ปี 1 เดือน - 19 ปี)
+*/
+const LMS_BOYS = {
+  61:[-.5202,13.9,0.09],62:[-.5203,13.91,0.09],63:[-.5204,13.93,0.09],64:[-.5206,13.95,0.09],
+  65:[-.5208,13.98,0.09],66:[-.5209,14.01,0.09],67:[-.5209,14.04,0.09],68:[-.5208,14.07,0.09],
+  69:[-.5206,14.1,0.09],70:[-.5204,14.14,0.09],71:[-.5201,14.18,0.09],72:[-.5198,14.22,0.09],
+  73:[-.5194,14.27,0.09],74:[-.5188,14.32,0.09],75:[-.5182,14.37,0.09],76:[-.5175,14.42,0.09],
+  77:[-.5167,14.47,0.09],78:[-.5158,14.53,0.09],79:[-.5149,14.58,0.09],80:[-.5139,14.64,0.09],
+  81:[-.5128,14.7,0.09],82:[-.5116,14.76,0.09],83:[-.5104,14.82,0.09],84:[-.5091,14.88,0.09],
+  85:[-.5077,14.94,0.09],86:[-.5063,15.0,0.09],87:[-.5048,15.07,0.09],88:[-.5032,15.13,0.09],
+  89:[-.5016,15.2,0.09],90:[-.4999,15.27,0.09],91:[-.4982,15.33,0.09],92:[-.4965,15.4,0.09],
+  93:[-.4947,15.47,0.09],94:[-.4929,15.54,0.09],95:[-.4911,15.61,0.09],96:[-.4892,15.68,0.09],
+  97:[-.4874,15.75,0.09],98:[-.4855,15.82,0.09],99:[-.4836,15.89,0.09],100:[-.4817,15.97,0.10],
+  101:[-.4798,16.04,0.10],102:[-.4779,16.11,0.10],103:[-.4760,16.19,0.10],104:[-.4742,16.26,0.10],
+  105:[-.4723,16.34,0.10],106:[-.4705,16.41,0.10],107:[-.4687,16.49,0.10],108:[-.4669,16.57,0.10],
+  109:[-.4652,16.64,0.10],110:[-.4635,16.72,0.10],111:[-.4618,16.8,0.10],112:[-.4601,16.88,0.10],
+  113:[-.4585,16.96,0.10],114:[-.4570,17.04,0.10],115:[-.4554,17.12,0.10],116:[-.4539,17.2,0.10],
+  117:[-.4525,17.28,0.10],118:[-.4511,17.37,0.10],119:[-.4497,17.45,0.10],120:[-.4484,17.53,0.10],
+  121:[-.4471,17.62,0.10],122:[-.4459,17.7,0.10],123:[-.4447,17.79,0.10],124:[-.4435,17.87,0.10],
+  125:[-.4424,17.96,0.10],126:[-.4413,18.05,0.10],127:[-.4403,18.13,0.10],128:[-.4392,18.22,0.10],
+  129:[-.4383,18.31,0.10],130:[-.4373,18.4,0.10],131:[-.4364,18.49,0.10],132:[-.4355,18.58,0.10],
+  133:[-.4347,18.67,0.10],134:[-.4338,18.76,0.10],135:[-.4330,18.85,0.10],136:[-.4323,18.94,0.10],
+  137:[-.4315,19.04,0.10],138:[-.4308,19.13,0.10],139:[-.4301,19.22,0.10],140:[-.4294,19.32,0.10],
+  141:[-.4288,19.41,0.10],142:[-.4281,19.51,0.10],143:[-.4275,19.6,0.10],144:[-.4269,19.7,0.10],
+  145:[-.4264,19.79,0.10],146:[-.4258,19.89,0.10],147:[-.4253,19.99,0.10],148:[-.4248,20.08,0.10],
+  149:[-.4243,20.18,0.10],150:[-.4238,20.28,0.10],151:[-.4234,20.38,0.10],152:[-.4229,20.48,0.10],
+  153:[-.4225,20.58,0.10],154:[-.4221,20.68,0.10],155:[-.4217,20.78,0.10],156:[-.4213,20.88,0.10],
+  157:[-.4210,20.98,0.10],158:[-.4206,21.08,0.10],159:[-.4203,21.18,0.10],160:[-.4200,21.28,0.10],
+  161:[-.4197,21.38,0.10],162:[-.4194,21.48,0.10],163:[-.4191,21.58,0.10],164:[-.4188,21.68,0.10],
+  165:[-.4186,21.78,0.10],166:[-.4183,21.88,0.10],167:[-.4181,21.97,0.10],168:[-.4178,22.07,0.10],
+  169:[-.4176,22.17,0.10],170:[-.4174,22.27,0.10],171:[-.4172,22.36,0.10],172:[-.4170,22.46,0.10],
+  173:[-.4168,22.55,0.10],174:[-.4166,22.64,0.10],175:[-.4165,22.74,0.10],176:[-.4163,22.83,0.10],
+  177:[-.4162,22.92,0.10],178:[-.4160,23.01,0.10],179:[-.4159,23.1,0.10],180:[-.4158,23.19,0.10],
+  181:[-.4157,23.27,0.10],182:[-.4156,23.36,0.10],183:[-.4155,23.44,0.10],184:[-.4154,23.53,0.10],
+  185:[-.4153,23.61,0.10],186:[-.4152,23.69,0.10],187:[-.4151,23.77,0.10],188:[-.4151,23.85,0.10],
+  189:[-.4150,23.93,0.10],190:[-.4149,24.01,0.10],191:[-.4149,24.08,0.10],192:[-.4148,24.16,0.10],
+  193:[-.4148,24.23,0.10],194:[-.4148,24.3,0.10],195:[-.4147,24.37,0.10],196:[-.4147,24.44,0.10],
+  197:[-.4147,24.51,0.10],198:[-.4147,24.57,0.10],199:[-.4147,24.64,0.10],200:[-.4147,24.7,0.10],
+  201:[-.4147,24.76,0.10],202:[-.4147,24.82,0.10],203:[-.4147,24.88,0.10],204:[-.4148,24.93,0.10],
+  205:[-.4148,24.99,0.10],206:[-.4148,25.04,0.10],207:[-.4149,25.09,0.10],208:[-.4149,25.14,0.10],
+  209:[-.4150,25.19,0.10],210:[-.4151,25.23,0.10],211:[-.4151,25.28,0.10],212:[-.4152,25.32,0.10],
+  213:[-.4153,25.36,0.10],214:[-.4153,25.4,0.10],215:[-.4154,25.43,0.10],216:[-.4155,25.47,0.10],
+  217:[-.4156,25.5,0.10],218:[-.4157,25.53,0.10],219:[-.4158,25.56,0.10],220:[-.4159,25.59,0.10],
+  221:[-.4160,25.61,0.10],222:[-.4161,25.64,0.10],223:[-.4162,25.66,0.10],224:[-.4163,25.68,0.10],
+  225:[-.4164,25.7,0.10],226:[-.4165,25.72,0.10],227:[-.4166,25.73,0.10],228:[-.4167,25.75,0.10]
+};
+
+const LMS_GIRLS = {
+  61:[-.4893,13.42,0.09],62:[-.4894,13.44,0.09],63:[-.4895,13.46,0.09],64:[-.4896,13.48,0.09],
+  65:[-.4897,13.51,0.09],66:[-.4898,13.54,0.09],67:[-.4898,13.57,0.09],68:[-.4897,13.6,0.09],
+  69:[-.4896,13.63,0.09],70:[-.4895,13.67,0.09],71:[-.4893,13.71,0.09],72:[-.4890,13.75,0.09],
+  73:[-.4887,13.79,0.09],74:[-.4883,13.84,0.09],75:[-.4879,13.88,0.09],76:[-.4874,13.93,0.09],
+  77:[-.4868,13.98,0.09],78:[-.4862,14.03,0.09],79:[-.4855,14.09,0.09],80:[-.4848,14.14,0.09],
+  81:[-.4840,14.2,0.09],82:[-.4832,14.25,0.09],83:[-.4823,14.31,0.09],84:[-.4814,14.37,0.09],
+  85:[-.4804,14.43,0.09],86:[-.4794,14.49,0.09],87:[-.4783,14.56,0.09],88:[-.4771,14.62,0.09],
+  89:[-.4760,14.69,0.09],90:[-.4747,14.75,0.09],91:[-.4735,14.82,0.09],92:[-.4721,14.89,0.09],
+  93:[-.4708,14.96,0.09],94:[-.4693,15.03,0.09],95:[-.4679,15.1,0.09],96:[-.4663,15.18,0.09],
+  97:[-.4648,15.25,0.09],98:[-.4631,15.32,0.09],99:[-.4615,15.4,0.09],100:[-.4598,15.47,0.09],
+  101:[-.4580,15.55,0.09],102:[-.4562,15.63,0.09],103:[-.4544,15.71,0.09],104:[-.4525,15.79,0.09],
+  105:[-.4506,15.87,0.09],106:[-.4486,15.95,0.09],107:[-.4466,16.03,0.09],108:[-.4446,16.12,0.09],
+  109:[-.4425,16.2,0.09],110:[-.4404,16.29,0.09],111:[-.4382,16.37,0.09],112:[-.4360,16.46,0.09],
+  113:[-.4338,16.55,0.09],114:[-.4315,16.64,0.09],115:[-.4292,16.73,0.09],116:[-.4269,16.82,0.09],
+  117:[-.4245,16.91,0.09],118:[-.4221,17.0,0.09],119:[-.4196,17.09,0.09],120:[-.4172,17.18,0.09],
+  121:[-.4146,17.27,0.09],122:[-.4121,17.37,0.09],123:[-.4095,17.46,0.09],124:[-.4069,17.56,0.09],
+  125:[-.4042,17.65,0.09],126:[-.4015,17.75,0.09],127:[-.3988,17.84,0.09],128:[-.3960,17.94,0.09],
+  129:[-.3932,18.04,0.09],130:[-.3904,18.13,0.09],131:[-.3875,18.23,0.09],132:[-.3846,18.33,0.09],
+  133:[-.3817,18.43,0.09],134:[-.3787,18.53,0.09],135:[-.3757,18.63,0.09],136:[-.3727,18.73,0.09],
+  137:[-.3696,18.83,0.09],138:[-.3665,18.93,0.09],139:[-.3634,19.03,0.09],140:[-.3602,19.13,0.09],
+  141:[-.3570,19.23,0.09],142:[-.3538,19.33,0.09],143:[-.3505,19.43,0.09],144:[-.3472,19.53,0.09],
+  145:[-.3439,19.63,0.09],146:[-.3406,19.73,0.09],147:[-.3372,19.83,0.09],148:[-.3338,19.93,0.09],
+  149:[-.3304,20.03,0.09],150:[-.3269,20.13,0.09],151:[-.3234,20.23,0.09],152:[-.3199,20.32,0.09],
+  153:[-.3164,20.42,0.09],154:[-.3128,20.51,0.09],155:[-.3092,20.61,0.09],156:[-.3056,20.7,0.09],
+  157:[-.3019,20.8,0.09],158:[-.2982,20.89,0.09],159:[-.2945,20.98,0.09],160:[-.2908,21.07,0.09],
+  161:[-.2870,21.16,0.09],162:[-.2832,21.25,0.09],163:[-.2794,21.33,0.09],164:[-.2756,21.42,0.09],
+  165:[-.2717,21.5,0.09],166:[-.2679,21.59,0.09],167:[-.2640,21.67,0.09],168:[-.2601,21.75,0.09],
+  169:[-.2562,21.83,0.09],170:[-.2522,21.91,0.09],171:[-.2483,21.98,0.09],172:[-.2443,22.06,0.09],
+  173:[-.2403,22.13,0.09],174:[-.2363,22.2,0.09],175:[-.2323,22.27,0.09],176:[-.2282,22.34,0.09],
+  177:[-.2242,22.4,0.09],178:[-.2201,22.47,0.09],179:[-.2160,22.53,0.09],180:[-.2120,22.59,0.09],
+  181:[-.2079,22.65,0.09],182:[-.2038,22.71,0.09],183:[-.1997,22.76,0.09],184:[-.1956,22.82,0.09],
+  185:[-.1915,22.87,0.09],186:[-.1874,22.92,0.09],187:[-.1833,22.97,0.09],188:[-.1792,23.01,0.09],
+  189:[-.1751,23.06,0.09],190:[-.1710,23.1,0.09],191:[-.1669,23.14,0.09],192:[-.1629,23.18,0.09],
+  193:[-.1588,23.22,0.09],194:[-.1547,23.25,0.09],195:[-.1507,23.29,0.09],196:[-.1466,23.32,0.09],
+  197:[-.1426,23.35,0.09],198:[-.1386,23.38,0.09],199:[-.1346,23.4,0.09],200:[-.1306,23.43,0.09],
+  201:[-.1266,23.45,0.09],202:[-.1226,23.47,0.09],203:[-.1187,23.49,0.09],204:[-.1147,23.51,0.09],
+  205:[-.1108,23.53,0.09],206:[-.1069,23.54,0.09],207:[-.1030,23.56,0.09],208:[-.0992,23.57,0.09],
+  209:[-.0953,23.58,0.09],210:[-.0915,23.59,0.09],211:[-.0877,23.6,0.09],212:[-.0840,23.6,0.09],
+  213:[-.0802,23.61,0.09],214:[-.0765,23.61,0.09],215:[-.0728,23.61,0.09],216:[-.0691,23.61,0.09],
+  217:[-.0655,23.61,0.09],218:[-.0619,23.61,0.09],219:[-.0584,23.6,0.09],220:[-.0548,23.6,0.09],
+  221:[-.0514,23.59,0.09],222:[-.0479,23.58,0.09],223:[-.0445,23.57,0.09],224:[-.0411,23.56,0.09],
+  225:[-.0378,23.55,0.09],226:[-.0345,23.53,0.09],227:[-.0313,23.52,0.09],228:[-.0281,23.5,0.09]
+};
+
+/* LMS METHOD */
+function calcZscore(bmi, L, M, S) {
+  if (Math.abs(L) < 0.01) return Math.log(bmi/M) / S;
+  return (Math.pow(bmi/M, L) - 1) / (L * S);
+}
+
+// normal CDF approximation (Abramowitz & Stegun)
+function normCDF(z) {
+  const a1=0.254829592, a2=-0.284496736, a3=1.421413741;
+  const a4=-1.453152027, a5=1.061405429, p=0.3275911;
+  const sign = z < 0 ? -1 : 1;
+  const x = Math.abs(z) / Math.sqrt(2);
+  const t = 1 / (1 + p * x);
+  const y = 1 - (((((a5*t + a4)*t) + a3)*t + a2)*t + a1)*t * Math.exp(-x*x);
+  return 0.5 * (1 + sign * y);
+}
+
+function getLMS(ageMonths) {
+  const table = sex === 'M' ? LMS_BOYS : LMS_GIRLS;
+  const m = Math.round(ageMonths);
+  if (table[m]) return table[m];
+  // interpolate ถ้าไม่มีตรง
+  const keys = Object.keys(table).map(Number).sort((a,b)=>a-b);
+  const lo = keys.filter(k=>k<=m).pop();
+  const hi = keys.filter(k=>k>=m)[0];
+  if (!lo) return table[hi];
+  if (!hi) return table[lo];
+  const t = (m-lo)/(hi-lo);
+  const lLMS = table[lo], hLMS = table[hi];
+  return [lLMS[0]+(hLMS[0]-lLMS[0])*t, lLMS[1]+(hLMS[1]-lLMS[1])*t, lLMS[2]+(hLMS[2]-lLMS[2])*t];
+}
+
+function getStatus(z) {
+  if (z < -3) return {text:'ผอมมาก',sub:'น้ำหนักน้อยกว่าเกณฑ์มาก ควรปรึกษาแพทย์',cls:'st-thin2'};
+  if (z < -2) return {text:'ผอม',sub:'น้ำหนักน้อยกว่าเกณฑ์ ควรดูแลโภชนาการ',cls:'st-thin'};
+  if (z <= 1) return {text:'ปกติ',sub:'น้ำหนักอยู่ในเกณฑ์ที่เหมาะสม',cls:'st-normal'};
+  if (z <= 2) return {text:'น้ำหนักเกิน',sub:'น้ำหนักเกินเกณฑ์ ควรดูแลอาหารและออกกำลังกาย',cls:'st-over'};
+  return {text:'อ้วน',sub:'น้ำหนักเกินเกณฑ์มาก ควรปรึกษาแพทย์',cls:'st-obese'};
+}
+
+function calcBMI() {
+  const ageY = parseInt(document.getElementById('ageY').value) || 0;
+  const ageM = parseInt(document.getElementById('ageM').value) || 0;
+  const w = parseFloat(document.getElementById('weight').value);
+  const h = parseFloat(document.getElementById('height').value);
+
+  if (!ageY || ageY < 5 || ageY > 18) { alert('กรุณากรอกอายุ 5–18 ปี'); return; }
+  if (ageM < 0 || ageM > 11) { alert('กรุณากรอกเดือน 0–11'); return; }
+  if (!w || w <= 0 || w > 200) { alert('กรุณากรอกน้ำหนักให้ถูกต้อง'); return; }
+  if (!h || h <= 50 || h > 220) { alert('กรุณากรอกส่วนสูงให้ถูกต้อง'); return; }
+
+  const ageMonths = ageY * 12 + ageM;
+  if (ageMonths < 61 || ageMonths > 228) { alert('รองรับอายุ 5 ปี 1 เดือน – 19 ปีเท่านั้น'); return; }
+
+  const hm = h / 100;
+  const bmi = w / (hm * hm);
+  const [L, M, S] = getLMS(ageMonths);
+  const z = calcZscore(bmi, L, M, S);
+  const pct = normCDF(z) * 100;
+  const status = getStatus(z);
+
+  // คำนวณ BMI ปกติ (Z=-2 ถึง +1)
+  const bmiLow = M * Math.pow(1 + L * S * (-2), 1/L);
+  const bmiHigh = M * Math.pow(1 + L * S * 1, 1/L);
+
+  // update display
+  document.getElementById('rBMI').textContent = bmi.toFixed(1);
+  const stEl = document.getElementById('rStatus');
+  stEl.textContent = status.text;
+  stEl.className = 'result-status ' + status.cls;
+  document.getElementById('rStatusSub').textContent = status.sub;
+  const pctStr = pct < 1 ? '<1' : pct > 99 ? '>99' : pct.toFixed(1);
+  // คำอธิบายตำแหน่งที่เข้าใจง่าย
+  let pctSubTxt = '';
+  if (pct < 1) {
+    pctSubTxt = '(ต่ำกว่าเด็กรุ่นเดียวกัน 99 ใน 100 คน)';
+  } else if (pct > 99) {
+    pctSubTxt = '(สูงกว่าเด็กรุ่นเดียวกัน 99 ใน 100 คน)';
+  } else {
+    const above = Math.round(pct);
+    const below = 100 - above;
+    pctSubTxt = '(สูงกว่าเด็กรุ่นเดียวกัน ' + above + ' ใน 100 คน)';
+  }
+  document.getElementById('rPct').textContent = pctStr + 'th';
+  document.getElementById('rPctSub').textContent = pctSubTxt;
+  document.getElementById('rNormal').textContent = bmiLow.toFixed(1) + ' – ' + bmiHigh.toFixed(1);
+  document.getElementById('rW').textContent = w + ' กก.';
+  document.getElementById('rH').textContent = h + ' ซม.';
+  document.getElementById('rAge').textContent = ageY + ' ปี ' + (ageM > 0 ? ageM + ' เดือน' : '');
+  // น้ำหนักที่เหมาะสม = BMI ปกติ × (ส่วนสูง m)²
+  const hmIdeal = h / 100;
+  const wLow = (bmiLow * hmIdeal * hmIdeal).toFixed(1);
+  const wHigh = (bmiHigh * hmIdeal * hmIdeal).toFixed(1);
+  document.getElementById('rIdeal').textContent = wLow + ' – ' + wHigh + ' กก.';
+
+  const box = document.getElementById('resultBox');
+  box.style.display = 'block';
+  requestAnimationFrame(() => box.scrollIntoView({behavior:'smooth', block:'nearest'}));
+}
+
+/* FAQ */
+function toggleFaq(btn) {
+  const expanded = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', String(!expanded));
+  btn.nextElementSibling.classList.toggle('open', !expanded);
+}
+</script>
+</body>
+</html>
